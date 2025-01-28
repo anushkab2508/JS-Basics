@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countdown</title>
+    <link href ="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="countdown-container">
+        <div class="countdown-timer" id="countdown"></div>
+        <div class="countdown-label"> unitl 2026</div>
+    </div>
+    
+</body>
+<script>
+    const targetDate = new Date('2026-01-01T00:00:00')
+    function updateCountdown(){
+        const currDate = new Date();
+        const timeDifference = targetDate- currDate
+        const days = Math.floor(timeDifference/(1000*60*60*24))
+        const hours = Math.floor((timeDifference%(1000*60*60*24)) /(1000*60*60))
+        const minutes = Math.floor((timeDifference%(1000*60*60))/(1000*60))
+        const sec = Math.floor((timeDifference%(1000*60))/1000)
+
+        document.getElementById('countdown').innerHTML=`${days} days ${hours} hours ${minutes} minutes ${sec} seconds`
+        setTimeout(updateCountdown,1000)
+
+    }
+    updateCountdown()
+</script>
+</html>
